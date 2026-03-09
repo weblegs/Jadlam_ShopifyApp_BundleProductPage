@@ -2,7 +2,7 @@
 
 client_id = "a0172db8d4c243469d8ba6ef0ce9cb93"
 name = "weblegs-bundle"
-application_url = "https://example.com"
+application_url = "https://jadlamshopifyappbundleproductpage-production.up.railway.app"
 embedded = true
 
 [build]
@@ -25,4 +25,4 @@ api_version = "2026-04"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://jadlamshopifyappbundleproductpage-production.up.railway.app/api/auth" ]
