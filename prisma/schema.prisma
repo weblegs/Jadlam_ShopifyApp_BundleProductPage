@@ -9,8 +9,7 @@ generator client {
 // enough when changing adapters.
 // See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
 datasource db {
-  // Local dev: sqlite  |  Railway: change to "postgresql" and set DATABASE_URL to the Railway Postgres URL
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
