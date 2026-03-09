@@ -109,20 +109,15 @@ export default function Index() {
 
   // Reset UI after successful save/delete
   useEffect(() => {
-    if (bundleFetcher.state === "submitting") {
-      bundleSavePending.current = true;
-    }
-    if (bundleFetcher.state === "idle" && bundleSavePending.current) {
+    if (bundleFetcher.state === "idle" && bundleSavePending.current && bundleFetcher.data?.success) {
       bundleSavePending.current = false;
-      if (bundleFetcher.data?.success) {
-        setIsCreatingBundle(false);
-        setIsEditingBundle(false);
-        setEditingBundleId(null);
-        setSelectedProducts([]);
-        setBundleName("");
-        setBundleHeading("");
-        setBundleSubHeading("");
-      }
+      setIsCreatingBundle(false);
+      setIsEditingBundle(false);
+      setEditingBundleId(null);
+      setSelectedProducts([]);
+      setBundleName("");
+      setBundleHeading("");
+      setBundleSubHeading("");
     }
   }, [bundleFetcher.state, bundleFetcher.data]);
 
@@ -249,6 +244,7 @@ export default function Index() {
 
     const data = { bundleName, bundleHeading, bundleSubHeading, handle, title };
 
+    bundleSavePending.current = true;
     if (isEditingBundle) {
       bundleFetcher.submit(
         { intent: "update", id: editingBundleId, ...data },
